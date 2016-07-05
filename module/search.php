@@ -2,7 +2,6 @@
 <?php
 //	Liệt kê bài viết theo loại tin		
 		$keyword_search=str_replace("+"," ",$_GET["q"]);
-
 		$sql_search="Select * From baiviet Where trangthai='Hienthi' And noidungbaiviet like '%".$keyword_search."%'";		
 		$sql_search_query=mysqli_query($connect,$sql_search);
 		while($my_array_search=mysqli_fetch_array($sql_search_query))

@@ -64,9 +64,12 @@ function checkExits($field,$table) {
 }
 function getData($idbaiviet) {
 	GLOBAL $connect;
-	$sql="Select keywords,description From baiviet Where idbaiviet=".$idbaiviet;	
+	$sql="Select keywords,description,view From baiviet Where idbaiviet=".$idbaiviet;	
 	$sqlKeyword=mysqli_query($connect,$sql);
 	$arrayKeyword=mysqli_fetch_array($sqlKeyword);
+	$arrayKeyword["view"] +=1;
+	$sqlUpdateView = "Update baiviet Set view=".$arrayKeyword["view"]." Where idbaiviet=".$idbaiviet;
+	$sqlUpdateViewQuery = mysqli_query($connect,$sqlUpdateView);
 	return $arrayKeyword;
 }
 ?>
